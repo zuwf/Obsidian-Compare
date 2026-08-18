@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-compare",
+	"name": "Compare",
+	"version": "0.1.0",
+	"minAppVersion": "1.4.0",
+	"description": "Side-by-side note comparison, like a spec-comparison table (91mobiles style): pick notes and compare their frontmatter properties at a glance, with differences highlighted.",
+	"author": "summapurpose",
+	"authorUrl": "",
+	"isDesktopOnly": false
+}
