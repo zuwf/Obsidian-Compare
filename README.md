@@ -4,7 +4,8 @@ Compare notes side by side, like a spec-comparison table (in the style of 91mobi
 
 ## Features
 
-- **Comparison view** — a dedicated panel with a table: one column per note, one row per frontmatter property.
+- **Comparison view** — opens as a full workspace tab by default, so it has room for many notes side by side and works well on both desktop and mobile (a narrow sidebar panel doesn't scale past a couple of notes). It can also be pinned to the right sidebar instead, via settings.
+- **Responsive table** — the property column and header row stay pinned in place while you scroll, so with 5, 10, or more notes you can scroll horizontally and still tell which property and which note you're looking at.
 - **Add / remove notes** — pick notes with a fuzzy search modal; remove any column with one click.
 - **Highlight differences** — rows where values differ across notes are highlighted so they stand out.
 - **Hide identical rows** — optionally collapse the table down to only the properties that differ.
@@ -30,6 +31,7 @@ Compare notes side by side, like a spec-comparison table (in the style of 91mobi
 
 ## Settings
 
+- **Open location** — open the comparison view as a full tab (default) or in the right sidebar.
 - **Highlight differences** — toggle the diff highlighting.
 - **Hide identical rows** — only show properties that differ.
 - **Image property** — the frontmatter key used for the image row (default: `image`).

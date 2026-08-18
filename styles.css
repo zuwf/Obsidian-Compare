@@ -1,12 +1,16 @@
 .compare-view-container {
 	padding: var(--size-4-4);
-	overflow-x: auto;
+	height: 100%;
+	overflow: auto;
 }
 
 .compare-toolbar {
 	display: flex;
+	flex-wrap: wrap;
 	gap: var(--size-4-2);
 	margin-bottom: var(--size-4-4);
+	position: sticky;
+	left: 0;
 }
 
 .compare-btn {
@@ -43,14 +47,17 @@
 }
 
 .compare-table {
-	width: 100%;
-	border-collapse: collapse;
-	table-layout: fixed;
+	width: max-content;
+	min-width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	table-layout: auto;
 }
 
 .compare-table th,
 .compare-table td {
-	border: 1px solid var(--background-modifier-border);
+	border-right: 1px solid var(--background-modifier-border);
+	border-bottom: 1px solid var(--background-modifier-border);
 	padding: var(--size-4-2) var(--size-4-3);
 	text-align: left;
 	vertical-align: top;
@@ -59,15 +66,35 @@
 
 .compare-property-header,
 .compare-property-name {
-	width: 180px;
+	width: 160px;
+	min-width: 160px;
+	max-width: 160px;
 	font-weight: var(--font-medium);
 	color: var(--text-muted);
 	background: var(--background-secondary);
+	position: sticky;
+	left: 0;
+	z-index: 1;
+}
+
+.compare-note-header,
+.compare-cell {
+	min-width: 200px;
 }
 
 .compare-note-header {
 	background: var(--background-secondary);
 	position: relative;
+}
+
+.compare-table thead th {
+	position: sticky;
+	top: 0;
+	z-index: 2;
+}
+
+.compare-table thead th.compare-property-header {
+	z-index: 3;
 }
 
 .compare-note-title {
@@ -112,4 +139,38 @@
 	text-align: center;
 	color: var(--text-muted);
 	padding: var(--size-4-6);
+}
+
+@media (max-width: 600px) {
+	.compare-view-container {
+		padding: var(--size-4-2);
+	}
+
+	.compare-btn {
+		padding: var(--size-4-2) var(--size-4-3);
+		font-size: var(--font-ui-medium);
+	}
+
+	.compare-property-header,
+	.compare-property-name {
+		width: 110px;
+		min-width: 110px;
+		max-width: 110px;
+		font-size: var(--font-ui-smaller);
+	}
+
+	.compare-note-header,
+	.compare-cell {
+		min-width: 150px;
+	}
+
+	.compare-table th,
+	.compare-table td {
+		padding: var(--size-4-1) var(--size-4-2);
+	}
+
+	.compare-remove-btn {
+		padding: var(--size-4-1);
+		font-size: var(--font-ui-medium);
+	}
 }

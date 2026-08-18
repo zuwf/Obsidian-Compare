@@ -12,6 +12,8 @@ export interface CompareSettings {
 	hideIdenticalRows: boolean;
 	/** Frontmatter key used to show an image row (e.g. "image", "cover"). */
 	imageKey: string;
+	/** Where the comparison view opens: a full workspace tab, or the right sidebar. */
+	openLocation: "tab" | "sidebar";
 }
 
 export const DEFAULT_SETTINGS: CompareSettings = {
@@ -20,6 +22,7 @@ export const DEFAULT_SETTINGS: CompareSettings = {
 	highlightDifferences: true,
 	hideIdenticalRows: false,
 	imageKey: "image",
+	openLocation: "tab",
 };
 
 export class CompareSettingTab extends PluginSettingTab {
@@ -35,6 +38,22 @@ export class CompareSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		containerEl.createEl("h2", { text: "Compare settings" });
+
+		new Setting(containerEl)
+			.setName("Open location")
+			.setDesc(
+				"Where the comparison view opens. A full tab gives it room for many notes side by side and works better on mobile; the sidebar is narrower but stays visible next to a note."
+			)
+			.addDropdown((dropdown) =>
+				dropdown
+					.addOption("tab", "Full tab")
+					.addOption("sidebar", "Right sidebar")
+					.setValue(this.plugin.settings.openLocation)
+					.onChange(async (value) => {
+						this.plugin.settings.openLocation = value as "tab" | "sidebar";
+						await this.plugin.saveSettings();
+					})
+			);
 
 		new Setting(containerEl)
 			.setName("Highlight differences")

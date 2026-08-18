@@ -60,7 +60,10 @@ export default class ComparePlugin extends Plugin {
 		let leaf: WorkspaceLeaf | null = workspace.getLeavesOfType(VIEW_TYPE_COMPARE)[0] ?? null;
 
 		if (!leaf) {
-			leaf = workspace.getRightLeaf(false);
+			leaf =
+				this.settings.openLocation === "sidebar"
+					? workspace.getRightLeaf(false)
+					: workspace.getLeaf("tab");
 			if (!leaf) return;
 			await leaf.setViewState({ type: VIEW_TYPE_COMPARE, active: true });
 		}
